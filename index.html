@@ -3,29 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flashcards de Programação - Edição Futebol</title>
+    <title>Flashcards de Futebol</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #1a472a; /* Verde gramado */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1b4d3e; /* Verde gramado */
             color: white;
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 20px;
+            margin: 0;
         }
 
         h1 {
-            border-bottom: 3px solid #ffffff;
-            padding-bottom: 10px;
+            color: #f1c40f; /* Amarelo troféu */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        p {
+            margin-bottom: 30px;
+            font-size: 14px;
+            color: #e0e0e0;
         }
 
         .card-container {
             background-color: transparent;
-            width: 350px;
-            height: 200px;
-            perspective: 1000px; /* Dá o efeito 3D no giro */
-            margin: 20px;
+            width: 320px;
+            height: 180px;
+            perspective: 1000px;
+            margin: 15px;
             cursor: pointer;
         }
 
@@ -38,7 +47,6 @@
             transform-style: preserve-3d;
         }
 
-        /* Classe que o JavaScript vai adicionar para girar o cartão */
         .card.virado {
             transform: rotateY(180deg);
         }
@@ -47,51 +55,62 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            backface-visibility: hidden; /* Esconde o verso quando está de frente */
-            border-radius: 15px;
+            backface-visibility: hidden;
+            border-radius: 12px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 20px;
             box-sizing: border-box;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.4);
         }
 
         .frente {
             background-color: #ffffff;
-            color: #1a472a;
-            border: 4px solid #f1c40f; /* Borda amarela (cartão de árbitro) */
+            color: #2c3e50;
+            border-top: 6px solid #27ae60;
+        }
+
+        .frente h2 {
+            font-size: 18px;
+            margin: 0;
         }
 
         .verso {
-            background-color: #2c3e50;
-            color: white;
+            background-color: #f39c12; /* Cor de cartão amarelo */
+            color: #1a1a1a;
             transform: rotateY(180deg);
-            border: 4px solid #3498db;
+            border-top: 6px solid #d35400;
         }
 
-        .dica {
-            font-size: 12px;
-            margin-top: 15px;
-            color: #7f8c8d;
+        .verso p {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0;
+            color: #1a1a1a;
+        }
+
+        .icone {
+            font-size: 24px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
 
-    <h1>⚽ Code & Gol: Flashcards</h1>
-    <p>Clique no cartão para ver a resposta!</p>
+    <h1>⚽ Quiz do Futebol</h1>
+    <p>Clique em qualquer cartão para revelar a resposta</p>
 
     <div class="card-container" onclick="virarCartao(this)">
         <div class="card">
             <div class="frente">
-                <h2>O que é uma VARIÁVEL?</h2>
-                <span class="dica">⚽ Pense na camisa de um jogador...</span>
+                <div class="icone">⏱️</div>
+                <h2>Quanto tempo dura uma partida oficial de futebol (sem acréscimos)?</h2>
             </div>
             <div class="verso">
-                <p>É um espaço na memória para guardar um dado.</p>
-                <p><strong>Exemplo no futebol:</strong> A camisa da Seleção é a variável. Hoje ela guarda o "Vini Jr", mas amanhã pode guardar outro jogador!</p>
+                <p>90 minutos</p>
+                <span>(Divididos em dois tempos de 45 minutos)</span>
             </div>
         </div>
     </div>
@@ -99,13 +118,11 @@
     <div class="card-container" onclick="virarCartao(this)">
         <div class="card">
             <div class="frente">
-                <h2>O que é uma estrutura condicional (IF / ELSE)?</h2>
-                <span class="dica">⚽ Pense na consulta ao VAR...</span>
+                <div class="icone">📏</div>
+                <h2>Qual é a distância oficial da marca do pênalti até a linha do gol?</h2>
             </div>
             <div class="verso">
-                <p>Serve para o código tomar decisões com base em uma condição.</p>
-                <p><strong>Exemplo:</strong><br>
-                <code>SE (estava_adiantado) { <br>&nbsp;&nbsp;anular_gol(); <br>} SENÃO { <br>&nbsp;&nbsp;validar_gol(); <br>}</code></p>
+                <p>11 metros</p>
             </div>
         </div>
     </div>
@@ -113,19 +130,29 @@
     <div class="card-container" onclick="virarCartao(this)">
         <div class="card">
             <div class="frente">
-                <h2>O que é um LOOP (Laço de repetição)?</h2>
-                <span class="dica">⚽ Pense no treino de pênaltis...</span>
+                <div class="icone">🟨</div>
+                <h2>O que acontece quando um jogador recebe dois cartões amarelos no mesmo jogo?</h2>
             </div>
             <div class="verso">
-                <p>É uma estrutura que repete uma ação várias vezes até uma condição ser atingida.</p>
-                <p><strong>Exemplo:</strong> "Enquanto o jogador não cobrar 10 pênaltis, continue chutando."</p>
+                <p>Ele recebe o cartão vermelho e é expulso da partida.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-container" onclick="virarCartao(this)">
+        <div class="card">
+            <div class="frente">
+                <div class="icone">🌍</div>
+                <h2>Em que país foi criada as regras do futebol moderno no ano de 1863?</h2>
+            </div>
+            <div class="verso">
+                <p>Na Inglaterra</p>
             </div>
         </div>
     </div>
 
     <script>
         function virarCartao(elemento) {
-            // Encontra a tag interna com a classe 'card' e adiciona/remove o efeito de giro
             const cartao = elemento.querySelector('.card');
             cartao.classList.toggle('virado');
         }
