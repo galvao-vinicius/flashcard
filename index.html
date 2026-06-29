@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards de Programação - Edição Futebol</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a472a; /* Verde gramado */
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h1 {
+            border-bottom: 3px solid #ffffff;
+            padding-bottom: 10px;
+        }
+
+        .card-container {
+            background-color: transparent;
+            width: 350px;
+            height: 200px;
+            perspective: 1000px; /* Dá o efeito 3D no giro */
+            margin: 20px;
+            cursor: pointer;
+        }
+
+        .card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        /* Classe que o JavaScript vai adicionar para girar o cartão */
+        .card.virado {
+            transform: rotateY(180deg);
+        }
+
+        .frente, .verso {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden; /* Esconde o verso quando está de frente */
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .frente {
+            background-color: #ffffff;
+            color: #1a472a;
+            border: 4px solid #f1c40f; /* Borda amarela (cartão de árbitro) */
+        }
+
+        .verso {
+            background-color: #2c3e50;
+            color: white;
+            transform: rotateY(180deg);
+            border: 4px solid #3498db;
+        }
+
+        .dica {
+            font-size: 12px;
+            margin-top: 15px;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>⚽ Code & Gol: Flashcards</h1>
+    <p>Clique no cartão para ver a resposta!</p>
+
+    <div class="card-container" onclick="virarCartao(this)">
+        <div class="card">
+            <div class="frente">
+                <h2>O que é uma VARIÁVEL?</h2>
+                <span class="dica">⚽ Pense na camisa de um jogador...</span>
+            </div>
+            <div class="verso">
+                <p>É um espaço na memória para guardar um dado.</p>
+                <p><strong>Exemplo no futebol:</strong> A camisa da Seleção é a variável. Hoje ela guarda o "Vini Jr", mas amanhã pode guardar outro jogador!</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-container" onclick="virarCartao(this)">
+        <div class="card">
+            <div class="frente">
+                <h2>O que é uma estrutura condicional (IF / ELSE)?</h2>
+                <span class="dica">⚽ Pense na consulta ao VAR...</span>
+            </div>
+            <div class="verso">
+                <p>Serve para o código tomar decisões com base em uma condição.</p>
+                <p><strong>Exemplo:</strong><br>
+                <code>SE (estava_adiantado) { <br>&nbsp;&nbsp;anular_gol(); <br>} SENÃO { <br>&nbsp;&nbsp;validar_gol(); <br>}</code></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-container" onclick="virarCartao(this)">
+        <div class="card">
+            <div class="frente">
+                <h2>O que é um LOOP (Laço de repetição)?</h2>
+                <span class="dica">⚽ Pense no treino de pênaltis...</span>
+            </div>
+            <div class="verso">
+                <p>É uma estrutura que repete uma ação várias vezes até uma condição ser atingida.</p>
+                <p><strong>Exemplo:</strong> "Enquanto o jogador não cobrar 10 pênaltis, continue chutando."</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function virarCartao(elemento) {
+            // Encontra a tag interna com a classe 'card' e adiciona/remove o efeito de giro
+            const cartao = elemento.querySelector('.card');
+            cartao.classList.toggle('virado');
+        }
+    </script>
+
+</body>
+</html>
